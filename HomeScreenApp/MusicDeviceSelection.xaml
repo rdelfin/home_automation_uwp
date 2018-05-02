@@ -10,14 +10,17 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="Select a Device" FontSize="72" HorizontalAlignment="Center" Height="100" VerticalAlignment="Top"
                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
-        <ListBox Height="380" Width="800" VerticalAlignment="Bottom" Background="{ThemeResource ListBoxBackgroundThemeBrush}"
-                 Name="deviceList">
+        
+        <ListBox Height="380" Width="800" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                 Background="{ThemeResource ListBoxBackgroundThemeBrush}" Name="deviceList" BorderThickness="2">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock FontSize="42" Text="{Binding DeviceName}" />
+                    <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
+                        <TextBlock FontSize="42" Text="{Binding DeviceName}" />
+                    </ListBoxItem>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <ProgressRing x:Name="spinner" HorizontalAlignment="Right" VerticalAlignment="Top" Width="50" Height="50" Margin="0,25,25,0" />
+        <ProgressRing x:Name="spinner" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Height="100" Margin="0,0,0,140" />
     </Grid>
 </Page>

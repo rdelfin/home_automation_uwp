@@ -9,14 +9,29 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListBox x:Name="menuList" HorizontalAlignment="Left" Height="480" VerticalAlignment="Center" Width="300" 
-                 Background="{ThemeResource ListBoxBackgroundThemeBrush}" FontSize="36" SelectionChanged="menuList_SelectionChanged">
-            <TextBlock FontSize="40" Text="💡 Lights" Name="lightsMenu" />
-            <TextBlock FontSize="40" Text="🎵 Music" Name="musicMenu" />
-            <TextBlock FontSize="40" Text="💻 WiFi" Name="wifiMenu" />
-            <TextBlock FontSize="40" Text="🌙 Mode: Off" Name="nightModeMenu" />
-            <TextBlock FontSize="40" Text="📺 TV Control" Name="tvMenu" />
-            <TextBlock FontSize="40" Text="🚪 Entrance" Name="entranceMenu" />
-            <TextBlock FontSize="40" Text="⚙️ Settings" Name="settingsMenu" />
+                 Background="{ThemeResource ListBoxBackgroundThemeBrush}" SelectionChanged="menuList_SelectionChanged"
+                 BorderThickness="2">
+            <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Name="lightsMenu">
+                <TextBlock FontSize="40" Text="💡 Lights" />
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Name="musicMenu">
+                <TextBlock FontSize="40" Text="🎵 Music" />
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Name="wifiMenu">
+                <TextBlock FontSize="40" Text="💻 WiFi" />
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Name="nightModeMenu">
+                <TextBlock FontSize="40" Text="🌙 Mode: Off" />
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Name="tvMenu">
+                <TextBlock FontSize="40" Text="📺 TV Control" />
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Name="entranceMenu">
+                <TextBlock FontSize="40" Text="🚪 Entrance" />
+            </ListBoxItem>
+            <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" Name="settingsMenu">
+                <TextBlock FontSize="40" Text="⚙️ Settings" />
+            </ListBoxItem>
         </ListBox>
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Text="Welcome Home" 
                    TextWrapping="Wrap" Width="500" Height="480" FontSize="100" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
