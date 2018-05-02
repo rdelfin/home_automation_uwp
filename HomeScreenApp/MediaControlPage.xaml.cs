@@ -42,10 +42,12 @@ namespace HomeScreenApp
 
         private void disableAll() {
             this.volumeSlider.IsEnabled = false;
+            this.spinner.IsActive = true;
         }
 
         private void enableAll() {
             this.volumeSlider.IsEnabled = true;
+            this.spinner.IsActive = false;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
