@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +26,16 @@ namespace HomeScreenApp
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void menuList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine("Selection changed");
+            if (this.menuList.SelectedItem == this.musicMenu)
+            {
+                Debug.WriteLine("Selection was music.");
+                this.Frame.Navigate(typeof(MusicDeviceSelection));
+            }
         }
     }
 }

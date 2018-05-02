@@ -8,20 +8,15 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <ListBox HorizontalAlignment="Left" Height="480" VerticalAlignment="Center" Width="300" 
-                 Background="{ThemeResource ListBoxBackgroundThemeBrush}" FontSize="36">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}" FontSize="40" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <x:String>💡 Lights</x:String>
-            <x:String>🎵 Music</x:String>
-            <x:String>💻 WiFi Pswd</x:String>
-            <x:String>🌙 Mode: Off</x:String>
-            <x:String>📺 TV Control</x:String>
-            <x:String>🚪 Entrance</x:String>
-            <x:String>⚙️ Settings</x:String>
+        <ListBox x:Name="menuList" HorizontalAlignment="Left" Height="480" VerticalAlignment="Center" Width="300" 
+                 Background="{ThemeResource ListBoxBackgroundThemeBrush}" FontSize="36" SelectionChanged="menuList_SelectionChanged">
+            <TextBlock FontSize="40" Text="💡 Lights" Name="lightsMenu" />
+            <TextBlock FontSize="40" Text="🎵 Music" Name="musicMenu" />
+            <TextBlock FontSize="40" Text="💻 WiFi" Name="wifiMenu" />
+            <TextBlock FontSize="40" Text="🌙 Mode: Off" Name="nightModeMenu" />
+            <TextBlock FontSize="40" Text="📺 TV Control" Name="tvMenu" />
+            <TextBlock FontSize="40" Text="🚪 Entrance" Name="entranceMenu" />
+            <TextBlock FontSize="40" Text="⚙️ Settings" Name="settingsMenu" />
         </ListBox>
         <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Text="Welcome Home" 
                    TextWrapping="Wrap" Width="500" Height="480" FontSize="100" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
