@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="DEVICE NAME" FontSize="60" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" />
-        <Slider HorizontalAlignment="Center" Margin="0,302,0,0" VerticalAlignment="Top" Width="600" Name="Volume" Value="50" />
+        <Slider HorizontalAlignment="Center" Margin="0,302,0,0" VerticalAlignment="Top" Width="600" Name="volumeSlider" Value="50" ValueChanged="Volume_ValueChanged" />
         <TextBlock Text="Volume" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,250,0,0" />
     </Grid>
 </Page>

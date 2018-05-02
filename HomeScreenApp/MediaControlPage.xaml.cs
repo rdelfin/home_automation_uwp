@@ -1,11 +1,18 @@
-﻿using System;
+﻿using SharpCaster.Controllers;
+using SharpCaster.Models;
+using SharpCaster.Services;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -23,22 +30,71 @@ namespace HomeScreenApp
     /// </summary>
     public sealed partial class MediaControlPage : Page
     {
-        Uri deviceUri = null;
+        private YouTubeController controller;
+        private Chromecast chromecast;
+        bool applicationStarted = false;
 
         public MediaControlPage()
         {
+            this.applicationStarted = false;
             this.InitializeComponent();
+        }
+
+        private void disableAll() {
+            this.volumeSlider.IsEnabled = false;
+        }
+
+        private void enableAll() {
+            this.volumeSlider.IsEnabled = true;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            deviceUri = e.Parameter as Uri;
+            this.disableAll();
+            Uri deviceUri = e.Parameter as Uri;
             if (deviceUri != null) {
                 Debug.WriteLine("Device URI: " + deviceUri.ToString());
+                loadChromecast(deviceUri);
             }
-            else {
+            else
                 Debug.WriteLine("Device URI is null!");
+        }
+
+        private async void loadChromecast(Uri uri) {
+            ObservableCollection<Chromecast> chromecasts = await ChromecastService.Current.StartLocatingDevices("192.168.0.108");
+            this.chromecast = chromecasts.First((Chromecast c) => { return c.DeviceUri == uri; });
+            if (this.chromecast == null) {
+                Debug.WriteLine("There was an error connecting to the chromecast.");
+                return;
             }
+
+            ChromecastService.Current.ChromeCastClient.ConnectedChanged += async delegate { if (this.controller == null) this.controller = await ChromecastService.Current.ChromeCastClient.LaunchYouTube(); };
+            ChromecastService.Current.ChromeCastClient.ApplicationStarted +=
+            async delegate {
+                while (this.controller == null)
+                {
+                    await Task.Delay(200);
+                }
+
+                await ExecuteOnUiThread(() => {
+                    this.enableAll();
+                    this.volumeSlider.Value = ChromecastService.Current.ChromeCastClient.Volume.level * 100.0;
+                });
+                this.applicationStarted = true;
+            };
+            ChromecastService.Current.ConnectToChromecast(chromecast);
+        }
+
+        private void Volume_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (this.applicationStarted && this.controller != null) {
+                this.controller.SetVolume(this.volumeSlider.Value / 100.0);
+            }
+        }
+
+        private static async Task ExecuteOnUiThread(DispatchedHandler yourAction)
+        {
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, yourAction);
         }
     }
 }
