@@ -12,11 +12,11 @@
                    Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
         
         <ListBox Height="380" Width="800" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                 Background="{ThemeResource ListBoxBackgroundThemeBrush}" Name="deviceList" BorderThickness="2">
+                 Background="{ThemeResource ListBoxBackgroundThemeBrush}" Name="deviceList" BorderThickness="2" SelectionChanged="deviceList_SelectionChanged">
             <ListBox.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate x:DataType="local:ChromecastItem">
                     <ListBoxItem BorderThickness="0,5" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}">
-                        <TextBlock FontSize="42" Text="{Binding DeviceName}" />
+                        <TextBlock FontSize="42" Text="{x:Bind DeviceName}" Name="{x:Bind DeviceId}" />
                     </ListBoxItem>
                 </DataTemplate>
             </ListBox.ItemTemplate>
