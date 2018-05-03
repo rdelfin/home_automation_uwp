@@ -22,5 +22,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <ProgressRing x:Name="spinner" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="100" Height="100" Margin="0,0,0,140" />
+        <Button Width="75" Height="75" x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="backButton_Click" />
     </Grid>
 </Page>

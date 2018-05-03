@@ -23,5 +23,7 @@
         <Border Width="575" Height="100" Margin="225,280,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="30,0,0,0" BorderBrush="{ThemeResource SystemControlBackgroundChromeWhiteBrush}" Background="{ThemeResource SystemControlBackgroundChromeWhiteBrush}">
             <TextBlock Text="E6B0CE3143" FontSize="40"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
         </Border>
+
+        <Button Width="75" Height="75" x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="backButton_Click" />
     </Grid>
 </Page>

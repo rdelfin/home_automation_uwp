@@ -75,6 +75,12 @@ namespace HomeScreenApp
 
             this.Frame.Navigate(typeof(MediaControlPage), item.DeviceUri);
         }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.Frame.CanGoBack)
+                this.Frame.GoBack();
+        }
     }
 
     public class ChromecastItem

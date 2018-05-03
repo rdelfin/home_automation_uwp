@@ -27,7 +27,8 @@
                 <SymbolIcon Symbol="Next" />
             </Viewbox>
         </Button>
-        
+
         <ProgressRing x:Name="spinner" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="200" IsActive="True" />
+        <Button Width="75" Height="75" x:Name="backButton" Style="{StaticResource NavigationBackButtonNormalStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Click="backButton_Click" />
     </Grid>
 </Page>
