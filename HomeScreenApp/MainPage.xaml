@@ -33,8 +33,11 @@
                 <TextBlock FontSize="40" Text="⚙️ Settings" />
             </ListBoxItem>
         </ListBox>
-        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Text="Welcome Home" 
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Text="Welcome Home"
                    TextWrapping="Wrap" Width="500" Height="480" FontSize="100" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+
+        <Button x:Name="powerButton" Content="Power Off" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="100" Height="50" Click="powerButton_Click" />
+
 
     </Grid>
 </Page>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -41,6 +42,11 @@ namespace HomeScreenApp
                 Debug.WriteLine("Selection was wifi.");
                 this.Frame.Navigate(typeof(WifiPage));
             }
+        }
+
+        private void powerButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, TimeSpan.FromSeconds(0));
         }
     }
 }
