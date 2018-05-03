@@ -18,11 +18,10 @@
         </Border>
 
         <Border Width="575" Height="100" Margin="225,170,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="30,0,0,0" BorderBrush="{ThemeResource SystemControlBackgroundChromeWhiteBrush}" Background="{ThemeResource SystemControlBackgroundChromeWhiteBrush}">
-            <TextBlock Text="Wat" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
+            <TextBlock Text="ARRIS-C4C2" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
         </Border>
         <Border Width="575" Height="100" Margin="225,280,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="30,0,0,0" BorderBrush="{ThemeResource SystemControlBackgroundChromeWhiteBrush}" Background="{ThemeResource SystemControlBackgroundChromeWhiteBrush}">
-            <TextBlock Text="Wat" FontSize="40"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
+            <TextBlock Text="E6B0CE3143" FontSize="40"  HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="{ThemeResource SystemControlBackgroundChromeMediumBrush}" />
         </Border>
-        
     </Grid>
 </Page>
