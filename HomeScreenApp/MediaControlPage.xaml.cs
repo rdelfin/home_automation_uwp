@@ -42,11 +42,17 @@ namespace HomeScreenApp
 
         private void disableAll() {
             this.volumeSlider.IsEnabled = false;
+            this.playButton.IsEnabled = false;
+            this.prevButton.IsEnabled = false;
+            this.nextButton.IsEnabled = false;
             this.spinner.IsActive = true;
         }
 
         private void enableAll() {
             this.volumeSlider.IsEnabled = true;
+            this.playButton.IsEnabled = true;
+            this.prevButton.IsEnabled = true;
+            this.nextButton.IsEnabled = true;
             this.spinner.IsActive = false;
         }
 
@@ -97,6 +103,31 @@ namespace HomeScreenApp
         private static async Task ExecuteOnUiThread(DispatchedHandler yourAction)
         {
             await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, yourAction);
+        }
+
+        private void prevButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.controller == null)
+                return;
+            this.controller.Previous();
+        }
+
+        private void playButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.controller == null)
+                return;
+            
+            if (ChromecastService.Current.ChromeCastClient.MediaStatus.PlayerState == SharpCaster.Models.MediaStatus.PlayerState.Playing)
+                this.controller.Pause();
+            else
+                this.controller.Play();
+        }
+
+        private void nextButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.controller == null)
+                return;
+            this.controller.Next();
         }
     }
 }
