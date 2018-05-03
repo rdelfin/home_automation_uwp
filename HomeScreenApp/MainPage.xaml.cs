@@ -36,6 +36,11 @@ namespace HomeScreenApp
                 Debug.WriteLine("Selection was music.");
                 this.Frame.Navigate(typeof(MusicDeviceSelection));
             }
+            if (this.menuList.SelectedItem == this.wifiMenu)
+            {
+                Debug.WriteLine("Selection was wifi.");
+                this.Frame.Navigate(typeof(WifiPage));
+            }
         }
     }
 }
