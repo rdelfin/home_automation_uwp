@@ -33,8 +33,15 @@
                 <TextBlock FontSize="40" Text="⚙️ Settings" />
             </ListBoxItem>
         </ListBox>
-        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Text="Welcome Home"
+        <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Text="Welcome"
                    TextWrapping="Wrap" Width="500" Height="480" FontSize="100" Foreground="{ThemeResource ApplicationForegroundThemeBrush}" />
+
+        <Border Width="450" Height="200" Background="{ThemeResource ContentDialogBackgroundThemeBrush}"
+                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,180,25,0"/>
+        <TextBlock x:Name="timeText" HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Center" Text="00:00:00"
+                   Width="500" FontSize="90" FontFamily="Consolas" Foreground="{ThemeResource ContentDialogContentForegroundBrush}" />
+        <TextBlock x:Name="dateText" HorizontalAlignment="Right" VerticalAlignment="Center" TextAlignment="Left" Text="3/May/2018"
+                   FontSize="40" Foreground="{ThemeResource ContentDialogContentForegroundBrush}" Margin="0,150,230,0" Loaded="TextBlock_Loaded" />
 
         <Button x:Name="powerButton" Content="Power Off" HorizontalAlignment="Right" Margin="0,0,0,0" VerticalAlignment="Bottom" Width="100" Height="50" Click="powerButton_Click" />
 

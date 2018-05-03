@@ -4,9 +4,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
+using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -24,6 +27,8 @@ namespace HomeScreenApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        DispatcherTimer timer;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -47,6 +52,31 @@ namespace HomeScreenApp
         private void powerButton_Click(object sender, RoutedEventArgs e)
         {
             ShutdownManager.BeginShutdown(ShutdownKind.Shutdown, TimeSpan.FromSeconds(0));
+        }
+
+        private async void timerCall(object sender, object e) {
+            updateClock();
+        }
+
+        private static async Task ExecuteOnUiThread(DispatchedHandler yourAction)
+        {
+            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, yourAction);
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            updateClock();
+            this.timer = new DispatcherTimer();
+            this.timer.Tick += timerCall;
+            this.timer.Interval = new TimeSpan(0, 0, 1);
+            this.timer.Start();
+        }
+
+        private async void updateClock() {
+            await ExecuteOnUiThread(() => {
+                this.dateText.Text = DateTime.Now.ToString("dd/MMM/yyyy");
+                this.timeText.Text = DateTime.Now.ToString("HH:mm:ss");
+            });
         }
     }
 }
